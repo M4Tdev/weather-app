@@ -1,1 +1,3 @@
 node_modules
+# Just testing wesbos's eslint cfg not adding because will istall globaly
+.eslintrc
