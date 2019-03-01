@@ -1,6 +1,10 @@
 @import './reset';
+@import './variables';
+@import './searchView';
+@import './forecastView';
+// IMPORT MOŻE PRZENIEŚĆ DO ODPOWIEDNIEGO VIEW
 
-body {
+html, body {
 	font-family: 'K2D', sans-serif;
 }
 
@@ -28,7 +32,7 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 	.current-location-name {
 		text-align: center;
 		font-size: 46px;
-		font-weight: bold;
+		font-weight: $bold;
 	}
 
 	.flex-container {
@@ -60,7 +64,7 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
 			.temperature {
 				font-size: 46px;
-				font-weight: bold;
+				font-weight: $bold;
 				text-align: center;
 				margin-bottom: 10px;
 			}
@@ -72,6 +76,72 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 					font-size: 14px;
 				}
 			}
+		}
+	}
+}
+
+.other-locations {
+	width: 100%;
+	text-align: center;
+
+	h2 {
+		font-size: 20px;
+		margin: 15px 0;
+	}
+
+	.other-locations-list {
+		width: 100%;
+
+		.other-location {
+			width: 90%;
+			background-color: #F9F9F9;
+			box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+			margin: 0 auto;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-evenly;
+			padding: 5px;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+
+		.other-location-section {
+			flex-basis: calc(100% / 3);
+		}
+
+		.other-location-name {
+			font-size: 24px;
+			font-weight: $medium;
+		}
+
+		.other-location-weather {
+			text-align: center;
+
+			.weather-icon {
+				width: 55px;
+				height: 55px;
+				display: block;
+				margin: 0 auto;
+			}
+
+			.weather-description {
+				font-size: 14px;
+				font-weight: $light;
+			}
+		}
+	}
+
+	.add-other-location-btn {
+		width: 80%;
+		height: 40px;
+		border-radius: 25px;
+		border: 1px solid rgba(7, 38, 51, 0.25);
+		background-color: white;
+
+		.add-btn-icon {
+			width: 30px;
+			height: 30px;
 		}
 	}
 }
