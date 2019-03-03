@@ -1,7 +1,15 @@
+import Current from './Model/Current';
 import '../css/main.scss';
 
-const test = () => {
-  console.log('testing');
+const currentLocation = new Current();
+
+// currentLocation.getLocation();
+// currentLocation.getLocation();
+
+const controlCurrent = async () => {
+  const userLocation = await currentLocation.getLocation();
+
+  console.log(userLocation);
 };
 
-test();
+window.addEventListener('load', controlCurrent);
