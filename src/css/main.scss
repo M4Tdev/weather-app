@@ -18,9 +18,14 @@ width: 100%;
 height: 250px;
 background-image: linear-gradient( to top ,#fff, #fff, #99B9D0);
 box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+cursor: pointer;
 
 @include tablet {
 	height: 270px;
+}
+
+@include desktop {
+	height:	270px;
 }
 
 	.current-location-icon {
@@ -35,6 +40,11 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 			@include tablet {
 				width: 40px;
 				height:	40px;
+			}
+
+			@include desktop {
+				width: 45px;
+				height:	45px;
 			}
 		}
 	}
@@ -57,6 +67,11 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 			margin: 30px 0 0 0;
 		}
 
+		@include desktop {
+			width: 70%;
+			margin: 30px auto 0;
+		}
+
 		.current-location-weather {
 
 			.weather-icon {
@@ -69,6 +84,11 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 					width: 60px;
 					height: 60px;
 				}
+
+				@include desktop {
+					width: 60px;
+					height: 60px;
+				}
 			}
 
 			.weather-description {
@@ -78,6 +98,10 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 				margin-top: 10px;
 
 				@include tablet {
+					font-size: 22px;
+				}
+
+				@include desktop {
 					font-size: 22px;
 				}
 			}
@@ -99,11 +123,19 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 					font-size: 22px;
 				}
 
+				@include desktop {
+					font-size: 24px;
+				}
+
 				.celsius {
 					font-size: 14px;
 
 					@include tablet {
 						font-size: 16px;
+					}
+
+					@include desktop {
+						font-size: 18px;
 					}
 				}
 			}
@@ -122,6 +154,11 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 		@include tablet {
 			font-size: 25px;
 		}
+
+		@include desktop {
+			font-size: 27px;
+			margin: 20px 0;
+		}
 	}
 
 	.other-locations-list {
@@ -139,10 +176,16 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 			padding: 5px;
 			box-sizing: border-box;
 			margin-bottom: 20px;
+			cursor: pointer;
 
 			@include tablet {
 				width: 80%;
 				padding: 10px;
+			}
+
+			@include desktop {
+				width: 40%;
+				padding: 15px;
 			}
 		}
 
@@ -156,6 +199,10 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
 			@include tablet {
 				font-size: 26px;
+			}
+
+			@include desktop {
+				font-size: 28px;
 			}
 		}
 
@@ -172,6 +219,11 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 					width: 60px;
 					height: 60px;
 				}
+
+				@include desktop {
+					width: 70px;
+					height: 70px;
+				}
 			}
 
 			.weather-description {
@@ -180,6 +232,10 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
 				@include tablet {
 					font-size: 18px;
+				}
+
+				@include desktop {
+					font-size: 20px;
 				}
 			}
 		}
@@ -191,6 +247,10 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 			@include tablet {
 				font-size: 30px;
 			}
+
+			@include desktop {
+				font-size: 32px;
+			}
 		}
 
 	}
@@ -201,9 +261,16 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 		border-radius: 25px;
 		border: 1px solid rgba(7, 38, 51, 0.25);
 		background-color: white;
+		margin-bottom: 20px;
+		cursor: pointer;
 
 		@include tablet {
 			width: 60%;
+			height: 50px;
+		}
+
+		@include desktop {
+			width: 20%;
 			height: 50px;
 		}
 

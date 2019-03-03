@@ -13,11 +13,20 @@
 		margin: 40px 0 40px 0;
 	}
 
+	@include desktop {
+		margin: 40px 0;
+	}
+
 	.location-icon {
 		width: 30px;
 		height: 30px;
 
 		@include tablet {
+			width: 45px;
+			height: 45px;
+		}
+
+		@include desktop {
 			width: 45px;
 			height: 45px;
 		}
@@ -32,6 +41,11 @@
 			margin: 0 0 0 20px;
 			font-size: 28px;
 		}
+
+		@include desktop {
+			margin: 0 0 0 30px;
+			font-size: 30px;
+		}
 	}
 
 	.close-forecast {
@@ -41,10 +55,16 @@
 		background: none;
 		border: none;
 		outline: none;
+		cursor: pointer;
 
 		@include tablet {
 			top: 40px;
 			right: 40px;
+		}
+
+		@include desktop {
+			top: 40px;
+			right: 100px;
 		}
 
 		.close-forecast-btn-icon {
@@ -54,6 +74,11 @@
 			transition: transform .1s ease-in-out;
 
 			@include tablet {
+				width: 40px;
+				height: 40px;
+			}
+
+			@include desktop {
 				width: 40px;
 				height: 40px;
 			}
@@ -85,6 +110,10 @@
 			width: 80%;
 		}
 
+		@include desktop {
+			width: 40%;
+		}
+
 		.date {
 			font-size: 14px;
 			font-weight: $light;
@@ -92,6 +121,10 @@
 			flex-grow: 1;
 
 			@include tablet {
+				font-size: 16px;
+			}
+
+			@include desktop {
 				font-size: 16px;
 			}
 		}
@@ -109,6 +142,10 @@
 		@include tablet {
 			font-size: 26px;
 		}
+
+		@include desktop {
+			font-size: 26px;
+		}
 	}
 
 	.day-section-weather-icon {
@@ -116,6 +153,11 @@
 		height: 55px;
 		display: block;
 		margin: 0 auto 10px;
+
+		@include desktop {
+			width: 60px;
+			height: 60px;
+		}
 	}
 
 	.day-section-weather-description {
@@ -125,12 +167,20 @@
 		@include tablet {
 			font-size: 16px;
 		}
+
+		@include desktop {
+			font-size: 18px;
+		}
 	}
 
 	.day-section-main-temperature {
 		display: block;
 		font-size: 32px;
 		font-weight: $regular;
+
+		@include desktop {
+			font-size: 34px;
+		}
 	}
 
 	.day-section-min-max-temperature {
@@ -138,6 +188,10 @@
 		font-weight: $light;
 
 		@include tablet {
+			font-size: 16px;
+		}
+
+		@include desktop {
 			font-size: 16px;
 		}
 	}

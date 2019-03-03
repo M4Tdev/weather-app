@@ -17,6 +17,12 @@
 			width: 50px;
 			height: 50px;
 		}
+
+		@include desktop {
+			margin-top: 50px;
+			width: 50px;
+			height: 50px;
+		}
 	}
 
 	.close-search-btn {
@@ -26,10 +32,16 @@
 		background: none;
 		border: none;
 		outline: none;
+		cursor: pointer;
 
 		@include tablet {
 			top: 40px;
 			right: 40px;
+		}
+
+		@include desktop {
+			top: 40px;
+			right: 100px;
 		}
 
 		.close-btn {
@@ -39,6 +51,11 @@
 			transition: transform .1s ease-in-out;
 
 			@include tablet {
+				width: 40px;
+				height: 40px;
+			}
+
+			@include desktop {
 				width: 40px;
 				height: 40px;
 			}
@@ -68,6 +85,11 @@
 		height: 60px;
 	}
 
+	@include desktop {
+		width: 40%;
+		height: 50px;
+	}
+
 	.search-input {
 		width: 100%;
 		margin-right: 10px;
@@ -83,12 +105,16 @@
 			height: 55px;
 		}
 
+		@include desktop {
+			height: 45px;
+		}
+
 		&::placeholder {
 			color: rgba(7, 38, 51, 0.5);
 		}
 
 		&:focus::placeholder {
-			color: rgba(7, 38, 51, 0.3);
+			color: rgba(7, 38, 51, 0.2);
 		}
 	}
 
@@ -100,6 +126,13 @@
 		outline: none;
 		transition: transform .1s ease-in-out;
 		transform: scale(1);
+		cursor: pointer;
+
+		@include desktop {
+			width: 50px;
+			height: 50px;
+			margin-right: -5px;
+		}
 
 		.btn-icon {
 			width: 30px;
@@ -126,6 +159,10 @@
 	@include tablet {
 		font-size: 22px;
 	}
+
+	@include desktop {
+		font-size: 24px;
+	}
 }
 
 .results-section {
@@ -135,6 +172,10 @@
 
 	@include tablet {
 		width: 80%;
+	}
+
+	@include desktop {
+		width: 40%;
 	}
 
 	.result {
@@ -151,6 +192,11 @@
 			height: 70px;
 			line-height: 70px;
 			margin: 0 0 20px 0;
+		}
+
+		@include desktop {
+			font-size: 18px;
+			margin: 0 0 15px 0;
 		}
 	}
 }
