@@ -1,4 +1,5 @@
 @import './variables';
+@import './mixin';
 
 .search-nav {
 	width: 100%;
@@ -10,6 +11,12 @@
 		width: 40px;
 		height: 40px;
 		margin-top: 20px;
+
+		@include tablet {
+			margin-top: 50px;
+			width: 50px;
+			height: 50px;
+		}
 	}
 
 	.close-search-btn {
@@ -20,11 +27,21 @@
 		border: none;
 		outline: none;
 
+		@include tablet {
+			top: 40px;
+			right: 40px;
+		}
+
 		.close-btn {
 			width: 30px;
 			height: 30px;
 			transform: scale(1);
 			transition: transform .1s ease-in-out;
+
+			@include tablet {
+				width: 40px;
+				height: 40px;
+			}
 
 			&:active {
 				transform: scale(0.5);
@@ -47,6 +64,10 @@
 	justify-content: space-between;
 	align-items: center;
 
+	@include tablet {
+		height: 60px;
+	}
+
 	.search-input {
 		width: 100%;
 		margin-right: 10px;
@@ -57,6 +78,10 @@
 		font-size: 14px;
 		font-weight: $regular;
 		outline: none;
+
+		@include tablet {
+			height: 55px;
+		}
 
 		&::placeholder {
 			color: rgba(7, 38, 51, 0.5);
@@ -79,6 +104,11 @@
 		.btn-icon {
 			width: 30px;
 			height: 30px;
+
+			@include tablet {
+				width: 40px;
+				height: 40px;
+			}
 		}
 
 		&:active {
@@ -92,12 +122,20 @@
 	margin: 20px 0 10px 0;
 	font-size: 18px;
 	font-weight: $regular;
+
+	@include tablet {
+		font-size: 22px;
+	}
 }
 
 .results-section {
 	width: 90%;
 	margin: 0 auto;
 	text-align: center;
+
+	@include tablet {
+		width: 80%;
+	}
 
 	.result {
 		height: 50px;
@@ -108,5 +146,11 @@
 		font-weight: $regular;
 		line-height: 50px;
 		margin: 0 0 10px 0;
+
+		@include tablet {
+			height: 70px;
+			line-height: 70px;
+			margin: 0 0 20px 0;
+		}
 	}
 }
