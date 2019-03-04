@@ -14,9 +14,6 @@ const controlCurrent = async () => {
     state.current = new Current();
   }
 
-  // render homeView
-  homeView.renderHome();
-
   // render loader
   base.renderLoader(document.querySelector(`.${base.elementsString.current}`));
 
@@ -43,6 +40,13 @@ const controlCurrent = async () => {
   homeView.renderCurrent(state.current.weather);
 };
 
+const controlHome = async () => {
+  // render homeView
+  homeView.renderHome();
+
+  await controlCurrent();
+};
+
 const controlSearch = async () => {
   const query = searchView.getInput();
 
@@ -54,7 +58,9 @@ const controlSearch = async () => {
       `.${base.elementsString.results}`
     );
 
+    // loader will render only if it is not already rendered
     if (!resultsElement.contains(document.querySelector('.lds-ellipsis'))) {
+      searchView.clearResults();
       base.renderLoader(
         document.querySelector(`.${base.elementsString.results}`)
       );
@@ -81,7 +87,7 @@ const controlSearch = async () => {
  */
 
 // Loading HOME view on page load
-window.addEventListener('load', controlCurrent);
+window.addEventListener('load', controlHome);
 
 document.addEventListener('click', e => {
   const currentLocation = e.target.closest('.current-location');
@@ -117,7 +123,7 @@ document.addEventListener('click', e => {
     base.clearMain();
 
     // render homeView
-    controlCurrent();
+    controlHome();
   }
 });
 

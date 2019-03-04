@@ -51,6 +51,7 @@ export const renderSearchResults = results => {
     renderError();
     return;
   }
+
   const HTML = results.reduce(
     (total, next) => total + createResultMarkup(next),
     ''
