@@ -25,26 +25,28 @@ export const renderHome = () => {
 
 export const renderCurrent = weather => {
   const markup = `
-		<div class="current-location-name">
-			<h2>${weather.name}</h2>
-		</div>
-		<div class="flex-container">
-			<div class="current-location-weather">
-				<img src="images/weather-icons/sun black.svg" alt="Weather Icon" class="weather-icon">
-				<span class="weather-description">
-				${weather.weather[0].description}
-				</span>
+		<div class="current-location" data-id="${weather.id}">
+			<div class="current-location-name">
+				<h2>${weather.name}</h2>
 			</div>
+			<div class="flex-container">
+				<div class="current-location-weather">
+					<img src="images/weather-icons/sun black.svg" alt="Weather Icon" class="weather-icon">
+					<span class="weather-description">
+					${weather.weather[0].description}
+					</span>
+				</div>
 
-			<div class="current-location-temperature">
-				<h2 class="temperature">${Math.floor(weather.main.temp)}°C</h2>
-				<span class="min-max-temperature">
-					min. ${Math.floor(
-            weather.main.temp_min
-          )}<span class="celsius">°C</span> • max. ${Math.floor(
+				<div class="current-location-temperature">
+					<h2 class="temperature">${Math.floor(weather.main.temp)}°C</h2>
+					<span class="min-max-temperature">
+						min. ${Math.floor(
+              weather.main.temp_min
+            )}<span class="celsius">°C</span> • max. ${Math.floor(
     weather.main.temp_max
   )}<span class="celsius">°C</span>
-				</span>
+					</span>
+				</div>
 			</div>
 		</div>
 	`;

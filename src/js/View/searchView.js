@@ -47,7 +47,10 @@ const createResultMarkup = item => {
 };
 
 export const renderSearchResults = results => {
-  if (results.length === 0) renderError();
+  if (results === undefined || results.length === 0) {
+    renderError();
+    return;
+  }
   const HTML = results.reduce(
     (total, next) => total + createResultMarkup(next),
     ''

@@ -9,6 +9,7 @@ export const elementsString = {
   searchInput: 'search-input',
   searchBtn: 'search-btn',
   addLocationBtn: 'add-other-location-btn',
+  loader: 'lds-ellipsis',
 };
 
 export const renderLoader = parent => {
@@ -20,7 +21,7 @@ export const renderLoader = parent => {
 };
 
 export const clearLoader = () => {
-  const loader = document.querySelector('.lds-ellipsis');
+  const loader = document.querySelector(`.${elementsString.loader}`);
   if (loader) loader.parentElement.removeChild(loader);
 };
 
