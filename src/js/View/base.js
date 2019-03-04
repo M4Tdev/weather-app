@@ -4,6 +4,11 @@ export const elements = {
 
 export const elementsString = {
   current: 'current-location-box',
+  results: 'results-section',
+  searchForm: 'search-form',
+  searchInput: 'search-input',
+  searchBtn: 'search-btn',
+  addLocationBtn: 'add-other-location-btn',
 };
 
 export const renderLoader = parent => {
@@ -17,4 +22,8 @@ export const renderLoader = parent => {
 export const clearLoader = () => {
   const loader = document.querySelector('.lds-ellipsis');
   if (loader) loader.parentElement.removeChild(loader);
+};
+
+export const clearMain = () => {
+  elements.mainContainer.innerHTML = '';
 };
