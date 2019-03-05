@@ -39,7 +39,7 @@ export const clearOther = () => {
 
 export const renderOtherLocationsMessage = () => {
   const markup = `
-		<h3 class="other-message">Press button below to add new locations</h3>
+		<h3 class="other-message">Press button bellow to add new locations</h3>
 	`;
 
   clearOther();
