@@ -1,5 +1,7 @@
 import Current from './Model/Current';
 import Search from './Model/Search';
+import Other from './Model/Other';
+import Saved from './Model/Saved';
 import * as homeView from './View/homeView';
 import * as searchView from './View/searchView';
 import * as base from './View/base';
@@ -40,11 +42,56 @@ const controlCurrent = async () => {
   homeView.renderCurrent(state.current.weather);
 };
 
-const controlHome = async () => {
+const controlSaved = () => {
+  if (!state.saved) {
+    state.saved = new Saved();
+  }
+
+  // if there is savedLocations in localStorage then it will load
+  if (localStorage.savedLocations) {
+    state.saved.readFromLocal();
+  }
+};
+
+const controlOther = async () => {
+  if (!state.other) {
+    state.other = new Other();
+  }
+
+  if (state.saved.saved.length !== 0) {
+    // render loader
+    base.renderLoader(
+      document.querySelector(`.${base.elementsString.otherLocationsList}`)
+    );
+
+    // using for of loops so I can use await
+    for (const id of state.saved.saved) {
+      await state.other.getWeather(id);
+    }
+
+    // clearing loader
+    base.clearLoader();
+
+    for (const [index, location] of Object.entries(state.other.weather)) {
+      await homeView.renderOther(location);
+    }
+
+    // rendering delete button under all saved locations
+    homeView.renderDeleteAllBtn();
+  } else {
+    homeView.renderOtherLocationsMessage();
+  }
+};
+
+const controlHome = () => {
   // render homeView
   homeView.renderHome();
 
-  await controlCurrent();
+  controlCurrent();
+
+  controlSaved();
+
+  controlOther();
 };
 
 const controlSearch = async () => {
@@ -95,6 +142,8 @@ document.addEventListener('click', e => {
     `.${base.elementsString.addLocationBtn}`
   );
   const closeBtn = e.target.closest('.close-button');
+  const searchResult = e.target.closest('.result');
+  const deleteAllSavedBtn = e.target.closest('.deleteAllSaved');
 
   if (currentLocation) {
     console.log('CurrentLocation');
@@ -124,6 +173,22 @@ document.addEventListener('click', e => {
 
     // render homeView
     controlHome();
+  }
+
+  if (searchResult) {
+    const { id } = e.target.dataset;
+
+    // add location id to saved state
+    state.saved.addToSaved(id);
+
+    // persist saved location ids to localStorage
+    state.saved.saveToLocal();
+  }
+
+  if (deleteAllSavedBtn) {
+    homeView.renderOtherLocationsMessage();
+
+    state.saved.deleteAllSaved();
   }
 });
 
