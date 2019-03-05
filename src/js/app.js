@@ -7,6 +7,14 @@ import * as searchView from './View/searchView';
 import * as base from './View/base';
 import '../css/main.scss';
 
+/**
+ * TODO:
+ * FIX CLEARING LOADER, because it is removing not the one it should
+ * Styles for delete button and message when none location are added
+ * forecast model and view
+ * delete button in forecast view
+ */
+
 // State
 const state = {};
 
@@ -57,6 +65,8 @@ const controlOther = async () => {
   if (!state.other) {
     state.other = new Other();
   }
+
+  state.other.clearWeather();
 
   if (state.saved.saved.length !== 0) {
     // render loader
@@ -125,7 +135,9 @@ const controlSearch = async () => {
     // clearing displayed results to prepare div for next search
     searchView.clearResults();
 
-    searchView.renderSearchResults(state.search.result);
+    state.search.result.forEach(loc => {
+      searchView.renderSearchResults(loc, state.saved.isSaved(loc.id));
+    });
   }
 };
 
@@ -183,6 +195,12 @@ document.addEventListener('click', e => {
 
     // persist saved location ids to localStorage
     state.saved.saveToLocal();
+
+    // clear main container
+    base.clearMain();
+
+    // render homeView
+    controlHome();
   }
 
   if (deleteAllSavedBtn) {
