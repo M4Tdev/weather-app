@@ -203,5 +203,9 @@
 		&:hover {
 			transform: scale(1.03);
 		}
+
+		&.saved {
+			background-color: #A5C9FF;
+		}
 	}
 }
