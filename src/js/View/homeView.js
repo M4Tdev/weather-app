@@ -25,7 +25,7 @@ export const renderHome = () => {
 
 export const renderDeleteAllBtn = () => {
   const markup = `
-		<button class="deleteAllSaved">Delete saved location</button>
+		<button class="other-deleteAllSaved">Delete saved location</button>
 	`;
 
   document
@@ -39,7 +39,7 @@ export const clearOther = () => {
 
 export const renderOtherLocationsMessage = () => {
   const markup = `
-		<h3>Press button below to add new locations</h3>
+		<h3 class="other-message">Press button below to add new locations</h3>
 	`;
 
   clearOther();
