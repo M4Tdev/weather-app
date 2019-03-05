@@ -25,7 +25,7 @@ export const renderHome = () => {
 
 export const renderDeleteAllBtn = () => {
   const markup = `
-		<button class="other-deleteAllSaved">Delete saved location</button>
+		<button class="other-delete-all deleteAllSaved">Delete saved location</button>
 	`;
 
   document

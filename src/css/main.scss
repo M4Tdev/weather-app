@@ -281,6 +281,23 @@ cursor: pointer;
 		}
 	}
 
+	.other-message {
+		margin-bottom: 15px;
+	}
 
+	.other-delete-all {
+		margin-bottom: 15px;
+		background-color: #ed5e68;
+		border: 1px solid #ed5e68;
+		color: #F9F9F9;
+		box-sizing: border-box;
+		padding: 10px 15px;
+		border-radius: 10px;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: 0 0 5px #ed5e68;
+		}
+	}
 }
 
