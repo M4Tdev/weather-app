@@ -7,6 +7,10 @@ export default class Saved {
     this.saved.push(parseInt(id));
   }
 
+  isSaved(id) {
+    return this.saved.findIndex(loc => loc === id);
+  }
+
   deleteFromSaved(id) {
     const index = this.saved.findIndex(el => el === id);
     this.saved.splice(index, 1);

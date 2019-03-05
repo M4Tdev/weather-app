@@ -37,27 +37,24 @@ export const renderError = () => {
     "Can't find city with this name";
 };
 
-const createResultMarkup = item => {
+const createResultMarkup = (item, isSaved) => {
   const markup = `
-		<div class="result" data-id="${item.id}">
+		<div class="result ${isSaved !== -1 ? 'saved' : ''}" data-id="${item.id}">
 			${item.name}, ${item.country}
 		</div>
 	`;
   return markup;
 };
 
-export const renderSearchResults = results => {
-  if (results === undefined || results.length === 0) {
+export const renderSearchResults = (result, isSaved) => {
+  if (result === undefined || result.length === 0) {
     renderError();
     return;
   }
 
-  const HTML = results.reduce(
-    (total, next) => total + createResultMarkup(next),
-    ''
-  );
+  const HTML = createResultMarkup(result, isSaved);
 
   document
     .querySelector(`.${elementsString.results}`)
-    .insertAdjacentHTML('afterbegin', HTML);
+    .insertAdjacentHTML('beforeend', HTML);
 };
