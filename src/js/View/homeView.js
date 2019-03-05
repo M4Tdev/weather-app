@@ -23,6 +23,59 @@ export const renderHome = () => {
   elements.mainContainer.insertAdjacentHTML('afterbegin', markup);
 };
 
+export const renderDeleteAllBtn = () => {
+  const markup = `
+		<button class="deleteAllSaved">Delete saved location</button>
+	`;
+
+  document
+    .querySelector(`.${elementsString.otherLocationsList}`)
+    .insertAdjacentHTML('beforeend', markup);
+};
+
+export const clearOther = () => {
+  document.querySelector('.other-locations-list').innerHTML = '';
+};
+
+export const renderOtherLocationsMessage = () => {
+  const markup = `
+		<h3>Press button below to add new locations</h3>
+	`;
+
+  clearOther();
+
+  document
+    .querySelector(`.${elementsString.otherLocationsList}`)
+    .insertAdjacentHTML('beforeend', markup);
+};
+
+export const renderOther = location => {
+  const markup = `
+		<div class="other-location">
+			<div class="other-location-section">
+				<h3 class="other-location-name">
+					${location.name}
+				</h3>
+			</div>
+			<div class="other-location-section other-location-weather">
+				<img src="images/weather-icons/storm black.svg" alt="${
+          location.weather[0].icon
+        }" class="weather-icon">
+				<span class="weather-description">${location.weather[0].description}</span>
+			</div>
+			<div class="other-location-section">
+				<span class="other-location-temperature">
+					${Math.round(location.main.temp)}°C
+				</span>
+			</div>
+		</div>
+	`;
+
+  document
+    .querySelector('.other-locations-list')
+    .insertAdjacentHTML('afterbegin', markup);
+};
+
 export const renderCurrent = weather => {
   const markup = `
 		<div class="current-location" data-id="${weather.id}">
@@ -42,7 +95,7 @@ export const renderCurrent = weather => {
 					<span class="min-max-temperature">
 						min. ${Math.floor(
               weather.main.temp_min
-            )}<span class="celsius">°C</span> • max. ${Math.floor(
+            )}<span class="celsius">°C</span> • max. ${Math.round(
     weather.main.temp_max
   )}<span class="celsius">°C</span>
 					</span>
