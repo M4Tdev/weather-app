@@ -9,6 +9,7 @@ export const elementsString = {
   searchInput: 'search-input',
   searchBtn: 'search-btn',
   addLocationBtn: 'add-other-location-btn',
+  otherLocationsList: 'other-locations-list',
   loader: 'lds-ellipsis',
 };
 
