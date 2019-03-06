@@ -36,7 +36,9 @@ export const renderWeather = (weather, city) => {
 			</div>
 			<div class="day-section">
 				<div class="day-section-weather">
-					<img src="images/weather-icons/sun black.svg" alt="Weather icon" class="day-section-weather-icon">
+					<img src="images/weather-icons/${
+            weather.weather[0].icon
+          }.png" alt="Weather icon" class="day-section-weather-icon">
 					<span class="day-section-weather-description">${
             weather.weather[0].description
           }</span>

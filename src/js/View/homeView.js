@@ -58,9 +58,9 @@ export const renderOther = location => {
 				</h3>
 			</div>
 			<div class="other-location-section other-location-weather">
-				<img src="images/weather-icons/storm black.svg" alt="${
-          location.weather[0].icon
-        }" class="weather-icon">
+				<img src="images/weather-icons/${location.weather[0].icon}.png" alt="${
+    location.weather[0].icon
+  }" class="weather-icon">
 				<span class="weather-description">${location.weather[0].description}</span>
 			</div>
 			<div class="other-location-section">
@@ -84,7 +84,9 @@ export const renderCurrent = weather => {
 			</div>
 			<div class="flex-container">
 				<div class="current-location-weather">
-					<img src="images/weather-icons/sun black.svg" alt="Weather Icon" class="weather-icon">
+					<img src="images/weather-icons/${
+            weather.weather[0].icon
+          }.png" alt="Weather Icon" class="weather-icon">
 					<span class="weather-description">
 					${weather.weather[0].description}
 					</span>
