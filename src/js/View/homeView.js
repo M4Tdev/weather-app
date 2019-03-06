@@ -51,7 +51,7 @@ export const renderOtherLocationsMessage = () => {
 
 export const renderOther = location => {
   const markup = `
-		<div class="other-location">
+		<div class="other-location" data-id=${location.id}>
 			<div class="other-location-section">
 				<h3 class="other-location-name">
 					${location.name}
