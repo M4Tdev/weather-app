@@ -2,8 +2,10 @@ import Current from './Model/Current';
 import Search from './Model/Search';
 import Other from './Model/Other';
 import Saved from './Model/Saved';
+import Forecast from './Model/Forecast';
 import * as homeView from './View/homeView';
 import * as searchView from './View/searchView';
+import * as forecastView from './View/forecastView';
 import * as base from './View/base';
 import '../css/main.scss';
 
@@ -146,6 +148,33 @@ const controlSearch = async () => {
   }
 };
 
+const controlForecast = async id => {
+  if (!state.forecast) state.forecast = new Forecast();
+
+  state.forecast.setID(id);
+
+  state.forecast.clearWeather();
+
+  // clear main container
+  base.clearMain();
+
+  // display forecast view
+  forecastView.renderForecast();
+
+  base.renderLoader(
+    document.querySelector(`.${base.elementsString.forecastDays}`)
+  );
+
+  await state.forecast.getWeather(state.forecast.id);
+
+  base.clearLoader(`.${base.elementsString.forecastDays}`);
+
+  // render weather
+  state.forecast.weather.forEach(weather =>
+    forecastView.renderWeather(weather, state.forecast.city)
+  );
+};
+
 /**
  * EVENT LISTENERS
  */
@@ -161,9 +190,12 @@ document.addEventListener('click', e => {
   const closeBtn = e.target.closest('.close-button');
   const searchResult = e.target.closest('.result');
   const deleteAllSavedBtn = e.target.closest('.deleteAllSaved');
+  const otherLocation = e.target.closest('.other-location');
 
   if (currentLocation) {
-    console.log('CurrentLocation');
+    const { id } = currentLocation.dataset;
+
+    controlForecast(id);
   }
 
   if (addLocationBtn) {
@@ -172,8 +204,8 @@ document.addEventListener('click', e => {
     searchView.renderSearch();
 
     const searchForm = document.querySelector('.search-form');
-    searchForm.addEventListener('submit', e => {
-      e.preventDefault();
+    searchForm.addEventListener('submit', event => {
+      event.preventDefault();
       controlSearch();
     });
 
@@ -206,6 +238,12 @@ document.addEventListener('click', e => {
 
     // render homeView
     controlHome();
+  }
+
+  if (otherLocation) {
+    const { id } = e.target.closest('.other-location').dataset;
+
+    controlForecast(id);
   }
 
   if (deleteAllSavedBtn) {
