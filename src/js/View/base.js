@@ -11,6 +11,7 @@ export const elementsString = {
   addLocationBtn: 'add-other-location-btn',
   otherLocationsList: 'other-locations-list',
   loader: 'lds-ellipsis',
+  forecastDays: 'forecast-days',
 };
 
 export const renderLoader = parent => {
