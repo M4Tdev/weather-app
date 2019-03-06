@@ -20,6 +20,10 @@ export default class Forecast {
     }
   }
 
+  setID(id) {
+    this.id = id;
+  }
+
   clearWeather() {
     this.weather = [];
     this.city = {};
