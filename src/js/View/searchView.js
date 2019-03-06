@@ -34,7 +34,7 @@ export const clearResults = () => {
 
 export const renderError = () => {
   document.querySelector(`.${elementsString.results}`).innerHTML =
-    "Can't find city with this name";
+    "Can't find city with provided name";
 };
 
 const createResultMarkup = (item, isSaved) => {

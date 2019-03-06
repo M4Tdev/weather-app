@@ -21,8 +21,10 @@ export const renderLoader = parent => {
   parent.insertAdjacentHTML('beforeend', loader);
 };
 
-export const clearLoader = () => {
-  const loader = document.querySelector(`.${elementsString.loader}`);
+export const clearLoader = parent => {
+  const par = document.querySelector(parent);
+  const loader = par.querySelector(`.${elementsString.loader}`);
+
   if (loader) loader.parentElement.removeChild(loader);
 };
 

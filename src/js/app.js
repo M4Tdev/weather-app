@@ -13,6 +13,7 @@ import '../css/main.scss';
  * Styles for delete button and message when none location are added
  * forecast model and view
  * delete button in forecast view
+ * Geolocation options
  */
 
 // State
@@ -36,7 +37,7 @@ const controlCurrent = async () => {
      * render error message when user denied getting his location
      */
     console.log(err);
-    base.clearLoader();
+    base.clearLoader(`.${base.elementsString.current}`);
     return;
   }
 
@@ -44,7 +45,7 @@ const controlCurrent = async () => {
   await state.current.getWeather();
 
   // clearing loader
-  base.clearLoader();
+  base.clearLoader(`.${base.elementsString.current}`);
 
   // render current location weather
   homeView.renderCurrent(state.current.weather);
@@ -80,7 +81,7 @@ const controlOther = async () => {
     }
 
     // clearing loader
-    base.clearLoader();
+    base.clearLoader(`.${base.elementsString.otherLocationsList}`);
 
     for (const [index, location] of Object.entries(state.other.weather)) {
       await homeView.renderOther(location);
@@ -118,6 +119,7 @@ const controlSearch = async () => {
     // loader will render only if it is not already rendered
     if (!resultsElement.contains(document.querySelector('.lds-ellipsis'))) {
       searchView.clearResults();
+
       base.renderLoader(
         document.querySelector(`.${base.elementsString.results}`)
       );
@@ -126,18 +128,21 @@ const controlSearch = async () => {
     try {
       await state.search.searchQuery();
     } catch (err) {
-      base.clearLoader();
-      searchView.renderError(err.message);
+      base.clearLoader(`.${base.elementsString.results}`);
+      searchView.renderError();
+      console.log(err);
     }
     // clearing loader
-    base.clearLoader();
+    base.clearLoader(`.${base.elementsString.results}`);
 
-    // clearing displayed results to prepare div for next search
-    searchView.clearResults();
+    if (state.search.result) {
+      // clearing displayed results to prepare div for next search
+      searchView.clearResults();
 
-    state.search.result.forEach(loc => {
-      searchView.renderSearchResults(loc, state.saved.isSaved(loc.id));
-    });
+      state.search.result.forEach(loc => {
+        searchView.renderSearchResults(loc, state.saved.isSaved(loc.id));
+      });
+    }
   }
 };
 
