@@ -9,11 +9,6 @@ import * as forecastView from './View/forecastView';
 import * as base from './View/base';
 import '../css/main.scss';
 
-/**
- * TODO:
- * delete button in forecast view
- */
-
 // State
 const state = {};
 
@@ -32,7 +27,7 @@ const controlCurrent = async () => {
   } catch (err) {
     // console.log(err);
     base.clearLoader(`.${base.elementsString.current}`);
-    homeView.renderGeoLocError();
+    homeView.renderGeoLocError(err.message);
     return;
   }
 
@@ -141,10 +136,12 @@ const controlSearch = async () => {
   }
 };
 
-const controlForecast = async id => {
+const controlForecast = async (id, type) => {
   if (!state.forecast) state.forecast = new Forecast();
 
   state.forecast.setID(id);
+
+  state.forecast.setType(type);
 
   state.forecast.clearWeather();
 
@@ -152,7 +149,7 @@ const controlForecast = async id => {
   base.clearMain();
 
   // display forecast view
-  forecastView.renderForecast();
+  forecastView.renderForecast(state.forecast.type);
 
   base.renderLoader(
     document.querySelector(`.${base.elementsString.forecastDays}`)
@@ -184,11 +181,12 @@ document.addEventListener('click', e => {
   const searchResult = e.target.closest('.result');
   const deleteAllSavedBtn = e.target.closest('.deleteAllSaved');
   const otherLocation = e.target.closest('.other-location');
+  const deleteLocalizationBtn = e.target.closest('.delete-location-btn');
 
   if (currentLocation) {
     const { id } = currentLocation.dataset;
 
-    controlForecast(id);
+    controlForecast(id, 'current');
   }
 
   if (addLocationBtn) {
@@ -236,7 +234,19 @@ document.addEventListener('click', e => {
   if (otherLocation) {
     const { id } = e.target.closest('.other-location').dataset;
 
-    controlForecast(id);
+    controlForecast(id, 'other');
+  }
+
+  if (deleteLocalizationBtn) {
+    const { id } = state.forecast;
+
+    state.saved.deleteFromSaved(id);
+
+    state.saved.saveToLocal();
+
+    base.clearMain();
+
+    controlHome();
   }
 
   if (deleteAllSavedBtn) {
@@ -251,4 +261,4 @@ document.addEventListener('click', e => {
  */
 
 // Setting state on window for development purposes
-window.state = state;
+// window.state = state;
