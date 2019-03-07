@@ -218,8 +218,14 @@ document.addEventListener('click', e => {
   if (searchResult) {
     const { id } = e.target.dataset;
 
-    // add location id to saved state
-    state.saved.addToSaved(id);
+    // checking if isSaved if yes click on it will remove it from saved
+    if (state.saved.isSaved(parseInt(id)) === -1) {
+      // add location id to saved state
+      state.saved.addToSaved(id);
+    } else {
+      // remove location from saved
+      state.saved.deleteFromSaved(id);
+    }
 
     // persist saved location ids to localStorage
     state.saved.saveToLocal();
