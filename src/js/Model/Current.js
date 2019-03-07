@@ -15,6 +15,10 @@ export default class Current {
         },
         err => {
           reject(err.message);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 30000,
         }
       );
     });

@@ -23,6 +23,18 @@ export const renderHome = () => {
   elements.mainContainer.insertAdjacentHTML('afterbegin', markup);
 };
 
+export const renderGeoLocError = () => {
+  const markup = `
+		<div>
+			<h2 class="geo-error">Enable Geolocation or GPS on your device</h2>
+		</div>
+	`;
+
+  document
+    .querySelector(`.${elementsString.current}`)
+    .insertAdjacentHTML('beforeend', markup);
+};
+
 export const renderDeleteAllBtn = () => {
   const markup = `
 		<button class="other-delete-all deleteAllSaved">Delete saved location</button>

@@ -50,6 +50,21 @@ cursor: pointer;
 		}
 	}
 
+	.geo-error {
+		text-align: center;
+		margin-top: 40px;
+		font-size: 20px;
+		font-weight: $bold;
+
+		@include tablet {
+			font-size: 22px;
+		}
+
+		@include desktop {
+			font-size: 24px;
+		}
+	}
+
 	.current-location-name {
 		text-align: center;
 		font-size: 46px;

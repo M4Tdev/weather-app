@@ -11,11 +11,7 @@ import '../css/main.scss';
 
 /**
  * TODO:
- * FIX CLEARING LOADER, because it is removing not the one it should
- * Styles for delete button and message when none location are added
- * forecast model and view
  * delete button in forecast view
- * Geolocation options
  */
 
 // State
@@ -34,12 +30,9 @@ const controlCurrent = async () => {
   try {
     await state.current.getLocation();
   } catch (err) {
-    /**
-     * TODO:
-     * render error message when user denied getting his location
-     */
-    console.log(err);
+    // console.log(err);
     base.clearLoader(`.${base.elementsString.current}`);
+    homeView.renderGeoLocError();
     return;
   }
 
