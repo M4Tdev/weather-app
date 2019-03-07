@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { APIKEY, PROXY, units } from '../config';
 
+const geoOptions = {
+  enableHighAccuracy: true,
+  maximumAge: 30000,
+};
+
 export default class Current {
   constructor() {
     this.location = {};
@@ -14,12 +19,9 @@ export default class Current {
           resolve(this.location);
         },
         err => {
-          reject(err.message);
+          reject(err);
         },
-        {
-          enableHighAccuracy: true,
-          maximumAge: 30000,
-        }
+        geoOptions
       );
     });
   }

@@ -65,6 +65,35 @@ cursor: pointer;
 		}
 	}
 
+	.err-msg {
+		text-align: center;
+		margin-top: 10px;
+		font-size: 12px;
+		font-weight: $light;
+		font-style: italic;
+
+		@include tablet {
+			font-size: 14px;
+		}
+
+		@include desktop {
+			font-size: 16px;
+		}
+
+		.quote {
+			font-weight: $bold;
+			font-size: 14px;
+
+			@include tablet {
+				font-size: 16px;
+			}
+
+			@include desktop {
+				font-size: 18px;
+			}
+		}
+	}
+
 	.current-location-name {
 		text-align: center;
 		font-size: 46px;

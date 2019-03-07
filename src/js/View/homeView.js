@@ -23,10 +23,11 @@ export const renderHome = () => {
   elements.mainContainer.insertAdjacentHTML('afterbegin', markup);
 };
 
-export const renderGeoLocError = () => {
+export const renderGeoLocError = err => {
   const markup = `
 		<div>
 			<h2 class="geo-error">Enable Geolocation or GPS on your device</h2>
+			<p class="err-msg"><span class="quote">"</span>${err}<span class="quote">"</span></p>
 		</div>
 	`;
 
