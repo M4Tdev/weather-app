@@ -4,6 +4,7 @@ import { APIKEY, PROXY } from '../config';
 export default class Forecast {
   constructor() {
     this.id = Number;
+    this.type = '';
   }
 
   async getWeather(id) {
@@ -22,6 +23,10 @@ export default class Forecast {
 
   setID(id) {
     this.id = id;
+  }
+
+  setType(type) {
+    this.type = type;
   }
 
   clearWeather() {

@@ -90,6 +90,29 @@
 	}
 }
 
+.del-btn {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 15px;
+
+	.delete-location-btn {
+		margin: 0 auto;
+		background-color: #ed5e68;
+		border: 1px solid #ed5e68;
+		color: #F9F9F9;
+		box-sizing: border-box;
+		padding: 10px 15px;
+		border-radius: 10px;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: 0 0 5px #ed5e68;
+		}
+	}
+
+}
+
+
 .forecast-days {
 
 	.day {
