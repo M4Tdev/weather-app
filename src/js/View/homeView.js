@@ -74,7 +74,7 @@ export const renderOther = location => {
 				<img src="images/weather-icons/${location.weather[0].icon}.png" alt="${
     location.weather[0].icon
   }" class="weather-icon">
-				<span class="weather-description">${location.weather[0].description}</span>
+				<span class="weather-description">${location.weather[0].main}</span>
 			</div>
 			<div class="other-location-section">
 				<span class="other-location-temperature">
@@ -101,7 +101,7 @@ export const renderCurrent = weather => {
             weather.weather[0].icon
           }.png" alt="Weather Icon" class="weather-icon">
 					<span class="weather-description">
-					${weather.weather[0].description}
+					${weather.weather[0].main}
 					</span>
 				</div>
 
