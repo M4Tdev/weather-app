@@ -182,6 +182,8 @@ document.addEventListener('click', e => {
   const deleteAllSavedBtn = e.target.closest('.deleteAllSaved');
   const otherLocation = e.target.closest('.other-location');
   const deleteLocalizationBtn = e.target.closest('.delete-location-btn');
+  const forecastDay = e.target.closest('.day');
+  const forecastDayCloseBtn = e.target.closest('.close-advanced-button');
 
   if (currentLocation) {
     const { id } = currentLocation.dataset;
@@ -259,6 +261,33 @@ document.addEventListener('click', e => {
     homeView.renderOtherLocationsMessage();
 
     state.saved.deleteAllSaved();
+  }
+
+  if (forecastDay) {
+    const { id } = forecastDay.dataset;
+
+    const dayIndex = state.forecast.weather.findIndex(
+      day => day.dt === parseInt(id)
+    );
+
+    base.clearMain();
+
+    const { city } = state.forecast;
+    const weather = state.forecast.weather[dayIndex];
+
+    forecastView.renderAdvanced(city, weather);
+  }
+
+  if (forecastDayCloseBtn) {
+    // clear main
+    base.clearMain();
+
+    // take id and type from current forecasted city
+    const { id } = state.forecast.city;
+    const { type } = state.forecast;
+
+    // pass id and type to forecast controller to display forecast again
+    controlForecast(id, type);
   }
 });
 

@@ -34,7 +34,7 @@ export const renderForecast = type => {
 
 export const renderWeather = (weather, city) => {
   const markup = `
-		<div class="day">
+		<div class="day" data-id="${weather.dt}">
 			<span class="date">${weather.dt_txt}</span>
 			<div class="day-section">
 				<h2 class="day-section-city-name">${city.name}</h2>
@@ -63,4 +63,58 @@ export const renderWeather = (weather, city) => {
   document
     .querySelector(`.${elementsString.forecastDays}`)
     .insertAdjacentHTML('beforeend', markup);
+};
+
+export const renderAdvanced = (city, weather) => {
+  console.log(city, weather);
+  const markup = `
+		<div class="advanced">
+			<div class="advanced-date">
+				${weather.dt_txt}
+				<span class="day">
+					Friday
+				</span>
+			</div>
+			<button class="close-advanced-button">
+				<img src="images/close.svg" alt="Close button" class="close-advanced-btn">
+			</button>
+			<div class="advanced-info">
+				<div class="section city-name">${city.name}</div>
+				<div class="section weather">
+					<img src="images/weather-icons/${
+            weather.weather[0].icon
+          }.png" alt="" class="weather-icon">
+					<span class="weather-desc">${weather.weather[0].main}</span>
+				</div>
+				<div class="section temp">
+					<span class="main-temp">${Math.round(weather.main.temp)}°C</span>
+					<span class="min-max-temp">
+						min. ${Math.round(weather.main.temp_min)} • max. ${Math.round(
+    weather.main.temp_max
+  )}
+					</span>
+				</div>
+			</div>
+			<div class="advanced-more-info">
+				<div class="section">
+					<span class="more-info-name">Temperature: </span>
+					<span class="more-info-value">${Math.round(weather.main.temp)}°C</span>
+				</div>
+				<div class="section">
+					<span class="more-info-name">Wind Speed: </span>
+					<span class="more-info-value">${weather.wind.speed}km/h</span>
+				</div>
+				<div class="section">
+					<span class="more-info-name">Humidity: </span>
+					<span class="more-info-value">${weather.main.humidity}%</span>
+				</div>
+				<div class="section">
+					<span class="more-info-name">Pressure: </span>
+					<span class="more-info-value">${weather.main.pressure}hPa</span>
+				</div>
+			</div>
+		</div>
+	`;
+
+  elements.mainContainer.insertAdjacentHTML('afterbegin', markup);
 };

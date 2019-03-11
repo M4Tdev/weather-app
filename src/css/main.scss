@@ -1,9 +1,10 @@
 @import './reset';
 @import './variables';
-@import './searchView';
-@import './forecastView';
 @import './mixin';
 @import './loaders';
+@import './searchView';
+@import './forecastView';
+@import './advancedView';
 // IMPORT MOŻE PRZENIEŚĆ DO ODPOWIEDNIEGO VIEW
 
 html, body {
