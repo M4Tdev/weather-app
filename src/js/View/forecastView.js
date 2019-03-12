@@ -66,7 +66,6 @@ export const renderWeather = (weather, city) => {
 };
 
 export const renderAdvanced = (city, weather) => {
-  console.log(city, weather);
   const markup = `
 		<div class="advanced">
 			<div class="advanced-date">
@@ -99,6 +98,14 @@ export const renderAdvanced = (city, weather) => {
 				<div class="section">
 					<span class="more-info-name">Temperature: </span>
 					<span class="more-info-value">${Math.round(weather.main.temp)}°C</span>
+				</div>
+				<div class="section">
+					<span class="more-info-name">Lowest Temperature: </span>
+					<span class="more-info-value">${Math.round(weather.main.temp_min)}°C</span>
+				</div>
+				<div class="section">
+					<span class="more-info-name">Highest Temperature: </span>
+					<span class="more-info-value">${Math.round(weather.main.temp_max)}°C</span>
 				</div>
 				<div class="section">
 					<span class="more-info-name">Wind Speed: </span>

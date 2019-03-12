@@ -8,11 +8,27 @@
 		font-weight: $regular;
 		padding-top: 20px;
 
+		@include tablet {
+			font-size: 22px;
+		}
+
+		@include tablet {
+			font-size: 26px;
+		}
+
 		.day {
 			display: block;
 			font-size: 20px;
 			font-weight: $bold;
 			margin-top: 10px;
+
+			@include tablet {
+				font-size: 26px;
+			}
+
+			@include tablet {
+				font-size: 28px;
+			}
 		}
 	}
 
@@ -65,6 +81,14 @@
 		align-items: center;
 		justify-content: center;
 
+		@include tablet {
+			width: 80%;
+		}
+
+		@include desktop {
+			width: 40%;
+		}
+
 		.section {
 			flex-basis: calc(100% / 3);
 		}
@@ -72,42 +96,81 @@
 		.city-name {
 			font-size: 22px;
 			font-weight: $bold;
+
+			@include tablet {
+				font-size: 24px;
+			}
 		}
 
 		.weather {
 
 			.weather-icon {
 				display: block;
-				margin: 0 auto;
+				margin: 0 auto 10px;
+				width: 55px;
+				height: 55px;
+
+				@include desktop {
+					width: 60px;
+					height: 60px;
+				}
 			}
 
 			.weather-desc {
 				display: block;
 				font-size: 18px;
 				font-weight: $light;
+
+				@include tablet {
+					font-size: 20px;
+				}
+
+				@include desktop {
+					font-size: 20px;
+				}
 			}
 		}
 
 		.temp {
 
 			.main-temp {
-				font-size: 24px;
+				font-size: 32px;
 				font-weight: $bold;
 				display: block;
+
+				@include desktop {
+					font-size: 34px;
+				}
 			}
 
 			.min-max-temp {
-				font-size: 15px;
+				font-size: 14px;
 				font-weight: $light;
+
+				@include tablet {
+					font-size: 16px;
+				}
+
+				@include desktop {
+					font-size: 18px;
+				}
 			}
 		}
 	}
 
 	.advanced-more-info {
-		margin-top: 60px;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		margin: 60px auto 0;
+
+		@include tablet {
+			width: 80%;
+		}
+
+		@include desktop {
+			width: 40%;
+		}
 
 		.section {
 			background-color: #F9F9F9;
