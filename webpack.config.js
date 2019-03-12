@@ -1,5 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/js/app.js'],
@@ -32,6 +33,9 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
+    }),
+    new MomentLocalesPlugin({
+      localesToKeep: ['es-us', 'pl'],
     }),
   ],
 };
