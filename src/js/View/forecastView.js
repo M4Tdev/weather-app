@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { elements, elementsString } from './base';
 
 export const renderForecast = type => {
@@ -33,9 +34,10 @@ export const renderForecast = type => {
 };
 
 export const renderWeather = (weather, city) => {
+  const date = moment.unix(weather.dt).format('dddd, L, h:mm:ss a');
   const markup = `
 		<div class="day" data-id="${weather.dt}">
-			<span class="date">${weather.dt_txt}</span>
+			<span class="date">${date}</span>
 			<div class="day-section">
 				<h2 class="day-section-city-name">${city.name}</h2>
 			</div>
@@ -66,12 +68,15 @@ export const renderWeather = (weather, city) => {
 };
 
 export const renderAdvanced = (city, weather) => {
+  const date = moment.unix(weather.dt).format('L, h:mm:ss a');
+  const day = moment.unix(weather.dt).format('dddd');
+
   const markup = `
 		<div class="advanced">
 			<div class="advanced-date">
-				${weather.dt_txt}
+				${date}
 				<span class="day">
-					Friday
+					${day}
 				</span>
 			</div>
 			<button class="close-advanced-button">
