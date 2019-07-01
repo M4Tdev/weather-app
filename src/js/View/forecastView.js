@@ -34,7 +34,7 @@ export const renderForecast = type => {
 };
 
 export const renderWeather = (weather, city) => {
-  const date = moment.unix(weather.dt).format('dddd, L, h:mm:ss a');
+  const date = moment.unix(weather.dt).format('dddd, Do MMMM, HH:mm');
   const markup = `
 		<div class="day" data-id="${weather.dt}">
 			<span class="date">${date}</span>
@@ -68,7 +68,7 @@ export const renderWeather = (weather, city) => {
 };
 
 export const renderAdvanced = (city, weather) => {
-  const date = moment.unix(weather.dt).format('L, h:mm:ss a');
+  const date = moment.unix(weather.dt).format('dddd, Do MMMM, HH:mm');
   const day = moment.unix(weather.dt).format('dddd');
 
   const markup = `
