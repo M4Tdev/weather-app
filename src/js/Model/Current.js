@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { APIKEY, PROXY, units } from '../config';
 
 const geoOptions = {
   enableHighAccuracy: true,
@@ -28,9 +27,9 @@ export default class Current {
 
   async getWeather() {
     const res = await axios(
-      `${PROXY}https://api.openweathermap.org/data/2.5/weather?&APPID=${APIKEY}&units=${units}&lat=${
-        this.location.coords.latitude
-      }&lon=${this.location.coords.longitude}`
+      `${process.env.PROXY}https://api.openweathermap.org/data/2.5/weather?&APPID=${
+        process.env.APIKEY
+      }&units=metric&lat=${this.location.coords.latitude}&lon=${this.location.coords.longitude}`
     );
 
     this.weather = res.data;
