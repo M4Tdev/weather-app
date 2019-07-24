@@ -7,11 +7,12 @@ module.exports = {
   entry: ['@babel/polyfill', './src/js/app.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'js/bundle.js',
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    port: 9000,
+    // contentBase: path.join(__dirname, 'dist'),
+    contentBase: './dist',
+    // port: 9000,
   },
   module: {
     rules: [
@@ -36,8 +37,6 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html',
     }),
-    new MomentLocalesPlugin({
-      localesToKeep: ['es-us', 'pl'],
-    }),
+    new MomentLocalesPlugin(),
   ],
 };
