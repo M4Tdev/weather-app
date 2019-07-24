@@ -9,8 +9,6 @@ import * as forecastView from './View/forecastView';
 import * as base from './View/base';
 import '../css/main.scss';
 
-console.log(process.env.DB_HOST);
-
 // State
 const state = {};
 
