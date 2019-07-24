@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { APIKEY, PROXY, units } from '../config';
 
 export default class Other {
   constructor() {
@@ -9,7 +8,9 @@ export default class Other {
   async getWeather(id) {
     try {
       const res = await axios(
-        `${PROXY}https://api.openweathermap.org/data/2.5/weather?APPID=${APIKEY}&units=${units}&id=${id}`
+        `${process.env.PROXY}https://api.openweathermap.org/data/2.5/weather?APPID=${
+          process.env.APIKEY
+        }&units=metric&id=${id}`
       );
       this.weather.push(res.data);
     } catch (err) {

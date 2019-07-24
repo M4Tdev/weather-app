@@ -1,16 +1,18 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/js/app.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'js/bundle.js',
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    port: 9000,
+    // contentBase: path.join(__dirname, 'dist'),
+    contentBase: './dist',
+    // port: 9000,
   },
   module: {
     rules: [
@@ -30,12 +32,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv(),
     new HTMLWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
     }),
-    new MomentLocalesPlugin({
-      localesToKeep: ['es-us', 'pl'],
-    }),
+    new MomentLocalesPlugin(),
   ],
 };

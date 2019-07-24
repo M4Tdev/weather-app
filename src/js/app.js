@@ -61,9 +61,7 @@ const controlOther = async () => {
 
   if (state.saved.saved.length !== 0) {
     // render loader
-    base.renderLoader(
-      document.querySelector(`.${base.elementsString.otherLocationsList}`)
-    );
+    base.renderLoader(document.querySelector(`.${base.elementsString.otherLocationsList}`));
 
     // using for of loops so I can use await
     for (const id of state.saved.saved) {
@@ -102,17 +100,13 @@ const controlSearch = async () => {
     state.search = new Search(query);
 
     // check if loader is already rendered
-    const resultsElement = document.querySelector(
-      `.${base.elementsString.results}`
-    );
+    const resultsElement = document.querySelector(`.${base.elementsString.results}`);
 
     // loader will render only if it is not already rendered
     if (!resultsElement.contains(document.querySelector('.lds-ellipsis'))) {
       searchView.clearResults();
 
-      base.renderLoader(
-        document.querySelector(`.${base.elementsString.results}`)
-      );
+      base.renderLoader(document.querySelector(`.${base.elementsString.results}`));
     }
 
     try {
@@ -151,18 +145,14 @@ const controlForecast = async (id, type) => {
   // display forecast view
   forecastView.renderForecast(state.forecast.type);
 
-  base.renderLoader(
-    document.querySelector(`.${base.elementsString.forecastDays}`)
-  );
+  base.renderLoader(document.querySelector(`.${base.elementsString.forecastDays}`));
 
   await state.forecast.getWeather(state.forecast.id);
 
   base.clearLoader(`.${base.elementsString.forecastDays}`);
 
   // render weather
-  state.forecast.weather.forEach(weather =>
-    forecastView.renderWeather(weather, state.forecast.city)
-  );
+  state.forecast.weather.forEach(weather => forecastView.renderWeather(weather, state.forecast.city));
 };
 
 /**
@@ -174,9 +164,7 @@ window.addEventListener('load', controlHome);
 
 document.addEventListener('click', e => {
   const currentLocation = e.target.closest('.current-location');
-  const addLocationBtn = e.target.closest(
-    `.${base.elementsString.addLocationBtn}`
-  );
+  const addLocationBtn = e.target.closest(`.${base.elementsString.addLocationBtn}`);
   const closeBtn = e.target.closest('.close-button');
   const searchResult = e.target.closest('.result');
   const deleteAllSavedBtn = e.target.closest('.deleteAllSaved');
@@ -266,9 +254,7 @@ document.addEventListener('click', e => {
   if (forecastDay) {
     const { id } = forecastDay.dataset;
 
-    const dayIndex = state.forecast.weather.findIndex(
-      day => day.dt === parseInt(id)
-    );
+    const dayIndex = state.forecast.weather.findIndex(day => day.dt === parseInt(id));
 
     base.clearMain();
 
