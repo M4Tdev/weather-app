@@ -25,16 +25,14 @@ export const renderSearch = () => {
   elements.mainContainer.insertAdjacentHTML('afterbegin', markup);
 };
 
-export const getInput = () =>
-  document.querySelector(`.${elementsString.searchInput}`).value;
+export const getInput = () => document.querySelector(`.${elementsString.searchInput}`).value;
 
 export const clearResults = () => {
   document.querySelector(`.${elementsString.results}`).innerHTML = '';
 };
 
 export const renderError = () => {
-  document.querySelector(`.${elementsString.results}`).innerHTML =
-    "Can't find city with provided name";
+  document.querySelector(`.${elementsString.results}`).innerHTML = "Can't find city with provided name";
 };
 
 const createResultMarkup = (item, isSaved) => {
@@ -54,7 +52,5 @@ export const renderSearchResults = (result, isSaved) => {
 
   const HTML = createResultMarkup(result, isSaved);
 
-  document
-    .querySelector(`.${elementsString.results}`)
-    .insertAdjacentHTML('beforeend', HTML);
+  document.querySelector(`.${elementsString.results}`).insertAdjacentHTML('beforeend', HTML);
 };
