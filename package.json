@@ -6,7 +6,6 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "dev": "webpack --mode development",
-    "prebuild": "./src/scripts/createEnv.js",
     "build": "webpack --mode production"
   },
   "keywords": [],
