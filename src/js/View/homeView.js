@@ -31,9 +31,7 @@ export const renderGeoLocError = err => {
 		</div>
 	`;
 
-  document
-    .querySelector(`.${elementsString.current}`)
-    .insertAdjacentHTML('beforeend', markup);
+  document.querySelector(`.${elementsString.current}`).insertAdjacentHTML('beforeend', markup);
 };
 
 export const renderDeleteAllBtn = () => {
@@ -41,9 +39,7 @@ export const renderDeleteAllBtn = () => {
 		<button class="other-delete-all deleteAllSaved">Delete saved location</button>
 	`;
 
-  document
-    .querySelector(`.${elementsString.otherLocationsList}`)
-    .insertAdjacentHTML('beforeend', markup);
+  document.querySelector(`.${elementsString.otherLocationsList}`).insertAdjacentHTML('beforeend', markup);
 };
 
 export const clearOther = () => {
@@ -57,9 +53,7 @@ export const renderOtherLocationsMessage = () => {
 
   clearOther();
 
-  document
-    .querySelector(`.${elementsString.otherLocationsList}`)
-    .insertAdjacentHTML('beforeend', markup);
+  document.querySelector(`.${elementsString.otherLocationsList}`).insertAdjacentHTML('beforeend', markup);
 };
 
 export const renderOther = location => {
@@ -71,9 +65,7 @@ export const renderOther = location => {
 				</h3>
 			</div>
 			<div class="other-location-section other-location-weather">
-				<img src="images/weather-icons/${location.weather[0].icon}.png" alt="${
-    location.weather[0].icon
-  }" class="weather-icon">
+				<img src="images/weather-icons/${location.weather[0].icon}.png" alt="${location.weather[0].icon}" class="weather-icon">
 				<span class="weather-description">${location.weather[0].main}</span>
 			</div>
 			<div class="other-location-section">
@@ -84,9 +76,7 @@ export const renderOther = location => {
 		</div>
 	`;
 
-  document
-    .querySelector('.other-locations-list')
-    .insertAdjacentHTML('afterbegin', markup);
+  document.querySelector('.other-locations-list').insertAdjacentHTML('afterbegin', markup);
 };
 
 export const renderCurrent = weather => {
@@ -97,9 +87,7 @@ export const renderCurrent = weather => {
 			</div>
 			<div class="flex-container">
 				<div class="current-location-weather">
-					<img src="images/weather-icons/${
-            weather.weather[0].icon
-          }.png" alt="Weather Icon" class="weather-icon">
+					<img src="images/weather-icons/${weather.weather[0].icon}.png" alt="Weather Icon" class="weather-icon">
 					<span class="weather-description">
 					${weather.weather[0].main}
 					</span>
@@ -108,9 +96,7 @@ export const renderCurrent = weather => {
 				<div class="current-location-temperature">
 					<h2 class="temperature">${Math.floor(weather.main.temp)}°C</h2>
 					<span class="min-max-temperature">
-						min. ${Math.floor(
-              weather.main.temp_min
-            )}<span class="celsius">°C</span> • max. ${Math.round(
+						min. ${Math.floor(weather.main.temp_min)}<span class="celsius">°C</span> • max. ${Math.round(
     weather.main.temp_max
   )}<span class="celsius">°C</span>
 					</span>
@@ -119,7 +105,5 @@ export const renderCurrent = weather => {
 		</div>
 	`;
 
-  document
-    .querySelector(`.${elementsString.current}`)
-    .insertAdjacentHTML('beforeend', markup);
+  document.querySelector(`.${elementsString.current}`).insertAdjacentHTML('beforeend', markup);
 };

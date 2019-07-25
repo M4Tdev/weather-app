@@ -43,28 +43,22 @@ export const renderWeather = (weather, city) => {
 			</div>
 			<div class="day-section">
 				<div class="day-section-weather">
-					<img src="images/weather-icons/${
-            weather.weather[0].icon
-          }.png" alt="Weather icon" class="day-section-weather-icon">
+					<img src="images/weather-icons/${weather.weather[0].icon}.png" alt="Weather icon" class="day-section-weather-icon">
 					<span class="day-section-weather-description">${weather.weather[0].main}</span>
 				</div>
 			</div>
 			<div class="day-section">
 				<div class="day-section-temperature">
-					<span class="day-section-main-temperature">${Math.round(
-            weather.main.temp
-          )}°C</span>
-					<span class="day-section-min-max-temperature">${Math.round(
-            weather.main.temp_min
-          )} • ${Math.round(weather.main.temp_max)}</span>
+					<span class="day-section-main-temperature">${Math.round(weather.main.temp)}°C</span>
+					<span class="day-section-min-max-temperature">${Math.round(weather.main.temp_min)} • ${Math.round(
+  weather.main.temp_max
+)}</span>
 				</div>
 			</div>
 		</div>
 	`;
 
-  document
-    .querySelector(`.${elementsString.forecastDays}`)
-    .insertAdjacentHTML('beforeend', markup);
+  document.querySelector(`.${elementsString.forecastDays}`).insertAdjacentHTML('beforeend', markup);
 };
 
 export const renderAdvanced = (city, weather) => {
@@ -85,17 +79,13 @@ export const renderAdvanced = (city, weather) => {
 			<div class="advanced-info">
 				<div class="section city-name">${city.name}</div>
 				<div class="section weather">
-					<img src="images/weather-icons/${
-            weather.weather[0].icon
-          }.png" alt="" class="weather-icon">
+					<img src="images/weather-icons/${weather.weather[0].icon}.png" alt="" class="weather-icon">
 					<span class="weather-desc">${weather.weather[0].main}</span>
 				</div>
 				<div class="section temp">
 					<span class="main-temp">${Math.round(weather.main.temp)}°C</span>
 					<span class="min-max-temp">
-						min. ${Math.round(weather.main.temp_min)} • max. ${Math.round(
-    weather.main.temp_max
-  )}
+						min. ${Math.round(weather.main.temp_min)} • max. ${Math.round(weather.main.temp_max)}
 					</span>
 				</div>
 			</div>
