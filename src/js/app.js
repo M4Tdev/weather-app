@@ -9,6 +9,8 @@ import * as forecastView from './View/forecastView';
 import * as base from './View/base';
 import '../css/main.scss';
 
+import * as serviceWorker from '../serviceWorker';
+
 // State
 const state = {};
 
@@ -283,3 +285,18 @@ document.addEventListener('click', e => {
 
 // Setting state on window for development purposes
 // window.state = state;
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/serviceWorker.js').then(
+      function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      },
+      function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+      }
+    );
+  });
+}
