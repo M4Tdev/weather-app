@@ -16,9 +16,16 @@ export default class Current {
         position => {
           this.location = position;
           resolve(this.location);
+          console.log('geoloc enabled', this.location);
+          this.saveLocationToLocalStorage();
         },
         err => {
-          reject(err);
+          this.getLocationFromLocalStorage();
+          if (this.location !== null) {
+            resolve(this.location);
+          } else {
+            reject(err);
+          }
         },
         geoOptions
       );
@@ -33,5 +40,17 @@ export default class Current {
     );
 
     this.weather = res.data;
+  }
+
+  saveLocationToLocalStorage() {
+    const { longitude, latitude } = this.location.coords;
+    localStorage.setItem('currentLocation', JSON.stringify({ coords: { longitude, latitude } }));
+    console.log('saved');
+  }
+
+  getLocationFromLocalStorage() {
+    const savedCurrentLocation = localStorage.getItem('currentLocation');
+    this.location = JSON.parse(savedCurrentLocation);
+    console.log('From getLocation', this.location);
   }
 }
