@@ -16,7 +16,6 @@ export default class Current {
         position => {
           this.location = position;
           resolve(this.location);
-          console.log('geoloc enabled', this.location);
           this.saveLocationToLocalStorage();
         },
         err => {
@@ -45,12 +44,10 @@ export default class Current {
   saveLocationToLocalStorage() {
     const { longitude, latitude } = this.location.coords;
     localStorage.setItem('currentLocation', JSON.stringify({ coords: { longitude, latitude } }));
-    console.log('saved');
   }
 
   getLocationFromLocalStorage() {
     const savedCurrentLocation = localStorage.getItem('currentLocation');
     this.location = JSON.parse(savedCurrentLocation);
-    console.log('From getLocation', this.location);
   }
 }
