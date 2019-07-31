@@ -41,6 +41,8 @@ module.exports = {
       filename: 'index.html',
     }),
     new MomentLocalesPlugin(),
-    new OfflinePlugin(),
+    new OfflinePlugin({
+      responseStrategy: 'network-first',
+    }),
   ],
 };
