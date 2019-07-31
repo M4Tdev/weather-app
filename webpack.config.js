@@ -2,6 +2,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const OfflinePlugin = require('offline-plugin');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/js/app.js'],
@@ -40,5 +41,6 @@ module.exports = {
       filename: 'index.html',
     }),
     new MomentLocalesPlugin(),
+    new OfflinePlugin(),
   ],
 };

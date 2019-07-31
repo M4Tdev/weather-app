@@ -1,3 +1,4 @@
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import Current from './Model/Current';
 import Search from './Model/Search';
 import Other from './Model/Other';
@@ -8,6 +9,8 @@ import * as searchView from './View/searchView';
 import * as forecastView from './View/forecastView';
 import * as base from './View/base';
 import '../css/main.scss';
+
+OfflinePluginRuntime.install();
 
 // State
 const state = {};
