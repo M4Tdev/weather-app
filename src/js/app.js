@@ -1,4 +1,5 @@
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+import * as Sentry from '@sentry/browser';
 import Current from './Model/Current';
 import Search from './Model/Search';
 import Other from './Model/Other';
@@ -11,6 +12,8 @@ import * as base from './View/base';
 import '../css/main.scss';
 
 OfflinePluginRuntime.install();
+
+Sentry.init({ dsn: 'https://46bad2cf41134e74bced75c6e5fe4848@sentry.io/1519114' });
 
 // State
 const state = {};

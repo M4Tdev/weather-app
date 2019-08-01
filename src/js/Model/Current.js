@@ -20,7 +20,7 @@ export default class Current {
         },
         err => {
           this.getLocationFromLocalStorage();
-          if (this.location !== null) {
+          if (this.location) {
             resolve(this.location);
           } else {
             reject(err);
