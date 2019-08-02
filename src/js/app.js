@@ -11,7 +11,25 @@ import * as forecastView from './View/forecastView';
 import * as base from './View/base';
 import '../css/main.scss';
 
-OfflinePluginRuntime.install();
+OfflinePluginRuntime.install({
+  onUpdating: () => {
+    console.log('SW Event:', 'onUpdating');
+  },
+  onUpdateReady: () => {
+    console.log('SW Event:', 'onUpdateReady');
+    // Tells to new SW to take control immediately
+    OfflinePluginRuntime.applyUpdate();
+  },
+  onUpdated: () => {
+    console.log('SW Event:', 'onUpdated');
+    // Reload the webpage to load into the new version
+    window.location.reload();
+  },
+
+  onUpdateFailed: () => {
+    console.log('SW Event:', 'onUpdateFailed');
+  },
+});
 
 Sentry.init({ dsn: 'https://46bad2cf41134e74bced75c6e5fe4848@sentry.io/1519114' });
 

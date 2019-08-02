@@ -43,6 +43,9 @@ module.exports = {
     new MomentLocalesPlugin(),
     new OfflinePlugin({
       responseStrategy: 'network-first',
+      ServiceWorker: {
+        events: true,
+      },
     }),
   ],
 };
