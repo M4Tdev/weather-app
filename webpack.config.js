@@ -44,7 +44,7 @@ module.exports = {
     new OfflinePlugin({
       responseStrategy: 'network-first',
       ServiceWorker: {
-        event: true,
+        events: true,
       },
     }),
   ],
