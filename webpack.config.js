@@ -43,6 +43,16 @@ module.exports = {
     new MomentLocalesPlugin(),
     new OfflinePlugin({
       responseStrategy: 'network-first',
+      externals: [
+        '/images/compass.svg',
+        '/images/close.svg',
+        '/images/location.svg',
+        '/images/plus.svg',
+        '/images/search.svg',
+        '/favicon.ico',
+        '/images/icons/icon-192x192.png',
+        '/images/icons/icon-512x512.png',
+      ],
       ServiceWorker: {
         events: true,
       },
