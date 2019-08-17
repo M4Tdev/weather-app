@@ -34,6 +34,17 @@ export const renderGeoLocError = err => {
   document.querySelector(`.${elementsString.current}`).insertAdjacentHTML('beforeend', markup);
 };
 
+export const renderNoInternetConnection = () => {
+  const markup = `
+		<div>
+			<h2 class="no-internet">No internet connection</h2>
+			<p class="err-msg">Connect to the internet to be able to use this app.</p>
+		</div>
+	`;
+
+  document.querySelector(`.${elementsString.current}`).insertAdjacentHTML('beforeend', markup);
+};
+
 export const renderDeleteAllBtn = () => {
   const markup = `
 		<button class="other-delete-all deleteAllSaved">Delete saved location</button>

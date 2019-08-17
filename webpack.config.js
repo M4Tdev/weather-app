@@ -44,6 +44,7 @@ module.exports = {
     new OfflinePlugin({
       responseStrategy: 'network-first',
       externals: [
+        '/manifest.json',
         '/images/compass.svg',
         '/images/close.svg',
         '/images/location.svg',
