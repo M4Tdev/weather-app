@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import * as Sentry from '@sentry/browser';
 import Current from './Model/Current';
@@ -45,13 +46,20 @@ const controlCurrent = async () => {
   // render loader
   base.renderLoader(document.querySelector(`.${base.elementsString.current}`));
 
-  // awaiting navigator to get permission to get users location
-  try {
-    await state.current.getLocation();
-  } catch (err) {
-    // console.log(err);
+  const isOnline = navigator.onLine;
+  if (isOnline) {
+    // awaiting navigator to get permission to get users location
+    try {
+      await state.current.getLocation();
+    } catch (err) {
+      // console.log(err);
+      base.clearLoader(`.${base.elementsString.current}`);
+      homeView.renderGeoLocError(err.message);
+      return;
+    }
+  } else {
     base.clearLoader(`.${base.elementsString.current}`);
-    homeView.renderGeoLocError(err.message);
+    homeView.renderNoInternetConnection();
     return;
   }
 
