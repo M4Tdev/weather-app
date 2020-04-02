@@ -1,0 +1,8 @@
+{
+	"build": {
+		"env": {
+			"APIKEY": "@weather_api_key",
+			"PROXY": "@cors_proxy"
+		}
+	}
+}
